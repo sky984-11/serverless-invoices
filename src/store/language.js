@@ -16,6 +16,7 @@ export default {
       { name: 'Português - BR', code: 'pt_br' },
       { name: 'Indonesian', code: 'id' },
       { name: 'Korean', code: 'kr' },
+      { name: '中文', code: 'zh' },
     ],
   },
   mutations: {

@@ -1,0 +1,7 @@
+{
+  "modal_title": "选择logo",
+  "button_text": "从文件中选择",
+  "logo_url": "输入图片网址",
+  "logo_url_err": "徽标大小必须小于 512KB。",
+  "or": "或"
+}

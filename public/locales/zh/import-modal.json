@@ -1,0 +1,6 @@
+{
+  "title": "导入数据",
+  "warning": "当前数据将被清除并被导入的数据覆盖！",
+  "button_text": "选择导入文件",
+  "import-error": "JSON 格式无效"
+}
