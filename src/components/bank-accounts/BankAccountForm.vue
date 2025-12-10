@@ -87,6 +87,7 @@ export default {
         .then((bankAccount) => {
           this.$router.push({
             query: {
+              ...this.$route.query, 
               bankAccountId: bankAccount.id,
             },
           });
