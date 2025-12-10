@@ -158,6 +158,7 @@ export default {
         .then((client) => {
           this.$router.push({
             query: {
+              ...this.$route.query,
               clientId: client.id,
             },
           });
