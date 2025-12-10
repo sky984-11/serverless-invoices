@@ -21,7 +21,7 @@
                                      @change="updateProp({ notes: $event })"/>
                     </div>
                     <div class="row">
-                        <table class="table" :class="{'invoice__rows--compact': invoice.is_compact}">
+                        <table class="table table-hover" :class="{'invoice__rows--compact': invoice.is_compact}">
                             <InvoiceRowsHeader :invoice="invoice"/>
                             <tbody>
                             <InvoiceRow v-for="(row, index) in invoice.rows" :errors="errors"
@@ -100,3 +100,22 @@ export default {
   },
 };
 </script>
+
+
+<style lang="scss"> 
+.table-hover {
+  border-collapse: collapse; /* 确保边框不叠加 */
+  border: 3px solid #333; 
+  
+  th, td {
+    border: 2px solid #333333; /* 深灰色边框 */
+  }
+  
+  &.invoice__rows--compact {
+    th, td {
+      border: 1px solid #333333; /* 如果紧凑模式也加深边框 */
+    }
+  }
+}
+
+</style>

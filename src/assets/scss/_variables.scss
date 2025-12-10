@@ -308,8 +308,7 @@ $sheet-width: 360px;
 $tracker-width: $sheet-width * 1.5;
 
 $table-cell-padding: math.div($grid-gutter-width, 2);
-$table-border-color: $border-color;
-$table-border-color: var(--text-caption);
+$table-border-color: var(--divider);
 $table-hover-bg: var(--divider);
 $table-color: $body-color;
 $table-hover-color: $body-color;
