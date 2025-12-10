@@ -1,10 +1,13 @@
+@use "sass:math";  
+
+
 .snackbar {
   &.vue-notification-template {
     display: flex;
     min-height: 48px;
     align-items: center;
-    padding: ($spacer / 4) ($spacer);
-    margin-bottom: $spacer / 4;
+    padding: (math.div($spacer, 4)) ($spacer);
+    margin-bottom: math.div($spacer, 4);
     border-radius: $border-radius-lg;
     box-shadow: $box-shadow-2;
     background-color: $dark;

@@ -25,34 +25,34 @@
 </template>
 
 <script>
-import config from "@/config/app.config";
-import { mapState } from "vuex";
-import { VBTooltip } from "bootstrap-vue";
-import LanguageSwitcher from "./LanguageSwitcher";
+import config from '@/config/app.config';
+import { mapState } from 'vuex';
+import { VBTooltip } from 'bootstrap-vue';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default {
-  i18nOptions: { namespaces: "the-footer" },
+  i18nOptions: { namespaces: 'the-footer' },
   components: { LanguageSwitcher },
   directives: {
-    "b-tooltip": VBTooltip,
+    'b-tooltip': VBTooltip,
   },
   computed: {
     ...mapState({
-      theme: (state) => state.themes.theme,
+      theme: state => state.themes.theme,
     }),
     isStorageWordpress() {
-      return config.storageType === "wordpress";
+      return config.storageType === 'wordpress';
     },
   },
   methods: {
     toggleTheme() {
-      if (this.theme === "light") {
-        this.$store.commit("themes/theme", "dark");
+      if (this.theme === 'light') {
+        this.$store.commit('themes/theme', 'dark');
       } else {
-        this.$store.commit("themes/theme", "light");
+        this.$store.commit('themes/theme', 'light');
       }
-      localStorage.setItem("theme", this.theme);
-      document.documentElement.setAttribute("data-theme", this.theme);
+      localStorage.setItem('theme', this.theme);
+      document.documentElement.setAttribute('data-theme', this.theme);
     },
   },
 };
