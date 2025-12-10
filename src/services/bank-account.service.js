@@ -16,6 +16,10 @@ class BankAccountService {
   async updateBankAccount(bankAccount) {
     return data.patch(`bank_accounts/${bankAccount.id}`, bankAccount);
   }
+
+  async deleteBankAccount(bankAccountId) {  
+  return data.delete(`bank_accounts/${bankAccountId}`);  
+}
 }
 
 export default new BankAccountService();
