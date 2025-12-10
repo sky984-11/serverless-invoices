@@ -44,12 +44,12 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import { formatDate } from "@/filters/date.filter";
-import EmptyState from "@/components/EmptyState";
+import { mapGetters } from 'vuex';
+import { formatDate } from '@/filters/date.filter';
+import EmptyState from '@/components/EmptyState';
 
 export default {
-  i18nOptions: { namespaces: "bank-accounts-list" },
+  i18nOptions: { namespaces: 'bank-accounts-list' },
   components: {
     EmptyState,
   },
@@ -58,18 +58,18 @@ export default {
   },
   computed: {
     ...mapGetters({
-      bankAccounts: "bankAccounts/all",
+      bankAccounts: 'bankAccounts/all',
     }),
   },
   mounted() {
-    this.$store.dispatch("bankAccounts/getBankAccounts");
+    this.$store.dispatch('bankAccounts/getBankAccounts');
   },
   methods: {
     createNewAccount() {
-      this.$store.dispatch("bankAccounts/openNewBankAccountModal");
+      this.$store.dispatch('bankAccounts/openNewBankAccountModal');
     },
     openBankAccountModal(bankAccount) {
-      this.$store.commit("bankAccounts/bankAccountId", bankAccount.id);
+      this.$store.commit('bankAccounts/bankAccountId', bankAccount.id);
       this.$router.push({
         query: {
           ...this.$route.query, // Preserve existing query params
@@ -78,7 +78,7 @@ export default {
       });
     },
     onSelect(account) {
-      this.$emit("select", account);
+      this.$emit('select', account);
     },
   },
 };

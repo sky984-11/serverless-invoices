@@ -55,14 +55,14 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import NotificationService from "@/services/notification.service";
-import AppInput from "@/components/form/AppInput";
-import AppTextarea from "@/components/form/AppTextarea";
-import Errors from "@/utils/errors";
+import { mapGetters } from 'vuex';
+import NotificationService from '@/services/notification.service';
+import AppInput from '@/components/form/AppInput';
+import AppTextarea from '@/components/form/AppTextarea';
+import Errors from '@/utils/errors';
 
 export default {
-  i18nOptions: { namespaces: "bank-account-form" },
+  i18nOptions: { namespaces: 'bank-account-form' },
   components: {
     AppInput,
     AppTextarea,
@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      bankAccount: "bankAccounts/bankAccount",
+      bankAccount: 'bankAccounts/bankAccount',
     }),
     isNew() {
       return this.bankAccount && this.bankAccount.$isNew;
@@ -84,23 +84,23 @@ export default {
   methods: {
     updateProp(props) {
       if (this.isNew) {
-        return this.$store.dispatch("bankAccounts/bankAccountProps", props);
+        return this.$store.dispatch('bankAccounts/bankAccountProps', props);
       }
       this.errors.clear();
 
       return this.$store
-        .dispatch("bankAccounts/updateBankAccount", props)
+        .dispatch('bankAccounts/updateBankAccount', props)
         .then(() => {
-          NotificationService.success(this.$t("notification_updated"));
+          NotificationService.success(this.$t('notification_updated'));
         })
-        .catch((err) => this.errors.set(err.errors));
+        .catch(err => this.errors.set(err.errors));
     },
     createBankAccount() {
       this.loading = true;
       this.errors.clear();
 
       return this.$store
-        .dispatch("bankAccounts/createNewBankAccount", this.bankAccount)
+        .dispatch('bankAccounts/createNewBankAccount', this.bankAccount)
         .then((bankAccount) => {
           this.$router.push({
             query: {
@@ -108,9 +108,9 @@ export default {
               bankAccountId: bankAccount.id,
             },
           });
-          this.$emit("done");
+          this.$emit('done');
         })
-        .catch((err) => this.errors.set(err.errors))
+        .catch(err => this.errors.set(err.errors))
         .finally(() => {
           this.loading = false;
         });
@@ -120,19 +120,19 @@ export default {
         `是否删除 ${this.bankAccount.bank_name}?`,
         {
           okTitle: '删除',
-          okVariant: "danger",
+          okVariant: 'danger',
           cancelTitle: '取消',
-          cancelVariant: "btn-link",
-          contentClass: "bg-base dp--24",
-        }
+          cancelVariant: 'btn-link',
+          contentClass: 'bg-base dp--24',
+        },
       );
       if (confirmed) {
-        this.$emit("done");
+        this.$emit('done');
         await this.$store.dispatch(
-          "bankAccounts/deleteBankAccount",
-          this.bankAccount.id
+          'bankAccounts/deleteBankAccount',
+          this.bankAccount.id,
         );
-        NotificationService.success(this.$t("notification_deleted"));
+        NotificationService.success(this.$t('notification_deleted'));
       }
     },
   },

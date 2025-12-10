@@ -8,7 +8,7 @@ export default {
     isModalOpen: null,
   },
 
-  
+
   mutations: {
     bankAccountId(state, bankAccountId) {
       state.bankAccountId = bankAccountId;
@@ -40,10 +40,10 @@ export default {
       return BankAccount.find(res.id);
     },
 
-    async deleteBankAccount(store, bankAccountId) {  
-      const res = await BankAccountService.deleteBankAccount(bankAccountId);  
-      await BankAccount.delete(bankAccountId);  
-      return res;  
+    async deleteBankAccount(store, bankAccountId) {
+      const res = await BankAccountService.deleteBankAccount(bankAccountId);
+      await BankAccount.delete(bankAccountId);
+      return res;
     },
 
     bankAccountProps({ state }, props) {

@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { BModal } from "bootstrap-vue";
-import BankAccountForm from "@/components/bank-accounts/BankAccountForm";
+import { mapGetters } from 'vuex';
+import { BModal } from 'bootstrap-vue';
+import BankAccountForm from '@/components/bank-accounts/BankAccountForm';
 
 export default {
   components: {
@@ -31,17 +31,17 @@ export default {
           // Preserve lang parameter, only remove bankAccountId
           const { bankAccountId, ...restQuery } = this.$route.query;
           this.$router.push({ query: restQuery });
-          this.$store.dispatch("bankAccounts/getBankAccounts");
+          this.$store.dispatch('bankAccounts/getBankAccounts');
         }
-        this.$store.commit("bankAccounts/isModalOpen", val);
+        this.$store.commit('bankAccounts/isModalOpen', val);
       },
     },
     ...mapGetters({
-      bankAccount: "bankAccounts/bankAccount",
+      bankAccount: 'bankAccounts/bankAccount',
     }),
   },
   watch: {
-    "$route.query.bankAccountId"() {
+    '$route.query.bankAccountId'() {
       this.getBankAccount();
     },
   },
@@ -51,20 +51,20 @@ export default {
   methods: {
     getBankAccount() {
       const query = this.$route.query;
-      if (query.hasOwnProperty("bankAccountId")) {
+      if (query.hasOwnProperty('bankAccountId')) {
         if (
-          (this.bankAccount && this.bankAccount.id !== query.bankAccountId) ||
-          !this.bankAccount
+          (this.bankAccount && this.bankAccount.id !== query.bankAccountId)
+          || !this.bankAccount
         ) {
           this.$store.dispatch(
-            "bankAccounts/getBankAccount",
-            query.bankAccountId
+            'bankAccounts/getBankAccount',
+            query.bankAccountId,
           );
         }
 
-        this.$store.commit("bankAccounts/isModalOpen", true);
+        this.$store.commit('bankAccounts/isModalOpen', true);
       } else {
-        this.$store.commit("bankAccounts/isModalOpen", false);
+        this.$store.commit('bankAccounts/isModalOpen', false);
       }
     },
     close() {

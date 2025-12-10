@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import dayjs from "dayjs";
-import DatePicker from "vue2-datepicker";
-import AppError from "@/components/form/AppError";
+import dayjs from 'dayjs';
+import DatePicker from 'vue2-datepicker';
+import AppError from '@/components/form/AppError';
 
 export default {
   components: {
@@ -56,10 +56,10 @@ export default {
       default: false,
     },
     format: {
-      default: "YYYY-MM-DD",
+      default: 'YYYY-MM-DD',
     },
     modelFormat: {
-      default: "YYYY-MM-DD",
+      default: 'YYYY-MM-DD',
     },
     type: {},
     placeholder: {},
@@ -73,17 +73,17 @@ export default {
   computed: {
     inputValue() {
       return Array.isArray(this.value)
-        ? this.value.map((val) => dayjs(val, this.modelFormat).toDate())
+        ? this.value.map(val => dayjs(val, this.modelFormat).toDate())
         : dayjs(this.value, this.modelFormat).toDate();
     },
   },
   methods: {
     outputValue(event) {
       const value = Array.isArray(event)
-        ? event.map((val) => this.toModelFormat(val))
+        ? event.map(val => this.toModelFormat(val))
         : this.toModelFormat(event);
-      this.$emit("input", value);
-      this.$emit("change", value);
+      this.$emit('input', value);
+      this.$emit('change', value);
     },
     toModelFormat(val) {
       return val ? dayjs(val).format(this.modelFormat) : null;

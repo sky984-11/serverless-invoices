@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import AppError from "@/components/form/AppError";
+import AppError from '@/components/form/AppError';
 
 export default {
   components: {
@@ -51,12 +51,12 @@ export default {
     },
     containerClasses: {},
     autocomplete: {
-      default: "on",
+      default: 'on',
     },
   },
   computed: {
     inputType() {
-      return this.type || "text";
+      return this.type || 'text';
     },
   },
   methods: {

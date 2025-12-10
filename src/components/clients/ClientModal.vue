@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { BModal } from "bootstrap-vue";
-import ClientForm from "@/components/clients/ClientForm";
+import { mapGetters } from 'vuex';
+import { BModal } from 'bootstrap-vue';
+import ClientForm from '@/components/clients/ClientForm';
 
 export default {
   components: {
@@ -30,18 +30,18 @@ export default {
           // Remove only clientId, preserve other params like lang
           const { clientId, ...restQuery } = this.$route.query;
           this.$router.push({ query: restQuery });
-          this.$store.dispatch("clients/getClients");
+          this.$store.dispatch('clients/getClients');
         }
-        this.$store.commit("clients/isModalOpen", val);
+        this.$store.commit('clients/isModalOpen', val);
       },
     },
     ...mapGetters({
-      client: "clients/client",
-      invoice: "invoices/invoice",
+      client: 'clients/client',
+      invoice: 'invoices/invoice',
     }),
   },
   watch: {
-    "$route.query.clientId"() {
+    '$route.query.clientId'() {
       this.getClient();
     },
   },
@@ -51,17 +51,17 @@ export default {
   methods: {
     getClient() {
       const query = this.$route.query;
-      if (query.hasOwnProperty("clientId")) {
+      if (query.hasOwnProperty('clientId')) {
         if (
-          (this.client && this.client.id !== query.clientId) ||
-          !this.client
+          (this.client && this.client.id !== query.clientId)
+          || !this.client
         ) {
-          this.$store.dispatch("clients/getClient", query.clientId);
+          this.$store.dispatch('clients/getClient', query.clientId);
         }
 
-        this.$store.commit("clients/isModalOpen", true);
+        this.$store.commit('clients/isModalOpen', true);
       } else {
-        this.$store.commit("clients/isModalOpen", false);
+        this.$store.commit('clients/isModalOpen', false);
       }
     },
     async close() {
@@ -70,8 +70,8 @@ export default {
     },
     async promptUpdateInvoice() {
       if (
-        this.$route.name === "invoice" &&
-        this.invoice.client_id === this.client.id
+        this.$route.name === 'invoice'
+        && this.invoice.client_id === this.client.id
       ) {
         /* const confirmed = await this.$bvModal.msgBoxConfirm('Update client details on invoice?', {
           okTitle: 'Update',
@@ -80,7 +80,7 @@ export default {
           contentClass: 'bg-base dp--24',
         });
         if (confirmed) { */
-        this.$store.dispatch("invoices/prefillClient", {
+        this.$store.dispatch('invoices/prefillClient', {
           client: this.client,
           invoiceId: this.invoice.id,
         });
