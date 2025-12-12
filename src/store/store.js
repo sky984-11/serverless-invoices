@@ -26,6 +26,7 @@ import InvoiceClientField from '@/store/models/invoice-client-field';
 import InvoiceTeamField from '@/store/models/invoice-team-field';
 import Tax from '@/store/models/tax';
 import InvoiceRowTax from '@/store/models/invoice-row-tax';
+import Company from '@/store/models/company';
 
 Vue.use(Vuex);
 
@@ -43,6 +44,7 @@ database.register(InvoiceTeamField);
 database.register(InvoiceRow);
 database.register(InvoiceRowTax);
 database.register(BankAccount);
+database.register(Company);
 
 export default new Vuex.Store({
   plugins: [VuexORM.install(database)],
@@ -60,6 +62,7 @@ export default new Vuex.Store({
     taxes,
     data,
     language,
+    Company
   },
   state: {},
   mutations: {},

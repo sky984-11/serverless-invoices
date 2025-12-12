@@ -221,6 +221,26 @@ export default {
         props,
       });
     },
+    prefillCompany({ dispatch }, payload) {  
+      const company = payload.company;  
+        
+      const props = {  
+        from_name: company.company_name,  
+        from_address: company.company_address,  
+        from_postal_code: company.company_postal_code,  
+        from_city: company.company_city,  
+        from_county: company.company_county,  
+        from_country: company.company_country,  
+        from_website: company.website,  
+        from_email: company.contact_email,  
+        from_phone: company.contact_phone,  
+      };  
+      
+      return dispatch('updateInvoice', {  
+        invoiceId: payload.invoiceId,  
+        props,  
+      });  
+    },
   },
   getters: {
     invoice(state) {
